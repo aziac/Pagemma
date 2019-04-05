@@ -15,6 +15,7 @@ export class DatasComponent {
     private userName: string;
     private clientId: string = 'xxxxxx';
     private clientSecret: string = 'xxxxxx';
+    private url: string = 'https://api.github.com';
 
     constructor(private _http: HttpClient) {
         this.userName = '';
@@ -22,7 +23,7 @@ export class DatasComponent {
 
     getUser() {
         if (this.userName) {
-            return this._http.get('http://google.com/' + this.userName
+            return this._http.get(this.url + this.userName
                 + '?client_id=' + this.clientId
                 + '&client_secret=' + this.clientSecret).pipe(map(res => res));
         }
@@ -30,7 +31,7 @@ export class DatasComponent {
 
     getUsers() {
         if (this.userName) {
-            return this._http.get('http://google.com/').pipe(map(res => res));
+            return this._http.get(this.url).pipe(map(res => res));
         }
     }
 }
