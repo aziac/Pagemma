@@ -11,12 +11,14 @@ import { map } from 'rxjs/operators';
 })
 export class DatasComponent implements OnInit {
   private userDescription: object;
+  private listUsers: any[] = [];
 
   constructor(private datasService: DatasService) {
     console.log(this.datasService);
   }
 
   async ngOnInit() {
-    this.userDescription = await this.datasService.getUser('hseguro');
+    this.userDescription = await this.datasService.getUser('mojombo');// no deberia ser estatico
+    this.listUsers.push(await this.datasService.getUsers());
   }
 }

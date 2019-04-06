@@ -16,11 +16,12 @@ import { pipe } from 'rxjs';
 export class DatasService {
     constructor(private http: HttpClient) { }
 
-    getUser(username) {
+    public getUser(username) {
+    	console.log('NOMAS', username);
         return this.http.get(`https://api.github.com/users/${username}`).toPromise();
     }
 
-    getUsers(username) {
-        return this.http.get(`https://api.github.com/users/${username}`);
+    getUsers() {
+        return this.http.get(`https://api.github.com/users`).toPromise();
     }
 }

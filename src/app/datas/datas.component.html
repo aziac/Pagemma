@@ -1,3 +1,22 @@
+<div class="horizontal">
+<div >
+<ul>
+    <div *ngFor="let user of listUsers;"> 
+    	<li  *ngFor="let u of user; let i = index" class="user"> 
+    		<a href="" (click)="getUser(u.login)"> Indice {{u.login}}  </a>  
+    	</li>
+    </div>
+</ul>
+</div >
+
+
+
+
+
+
+
+
+	<div >
 <p *ngIf="userDescription == null">
   Loading user data...
 </p>
@@ -6,4 +25,7 @@
     <img width="300" [src]="userDescription.avatar_url">
   </div>
   <b>{{ userDescription.login }}</b>
+</div>
+</div >
+
 </div>
