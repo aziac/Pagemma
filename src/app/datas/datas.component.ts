@@ -18,7 +18,12 @@ export class DatasComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.userDescription = await this.datasService.getUser('mojombo');// no deberia ser estatico
+    this.userDescription = await this.datasService.getUser('mojombo');
     this.listUsers.push(await this.datasService.getUsers());
   }
+
+async  getUser(user){
+    this.userDescription = await this.datasService.getUser(user);
+}
+
 }

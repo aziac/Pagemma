@@ -1,12 +1,14 @@
 <div class="horizontal">
 <div >
-<ul>
+
     <div *ngFor="let user of listUsers;"> 
+<ul>
     	<li  *ngFor="let u of user; let i = index" class="user"> 
-    		<a href="" (click)="getUser(u.login)"> Indice {{u.login}}  </a>  
+    		<a href="#" (click)="getUser(u.login)"> Indice {{u.login}}  </a>  
     	</li>
-    </div>
 </ul>
+    </div>
+
 </div >
 
 
