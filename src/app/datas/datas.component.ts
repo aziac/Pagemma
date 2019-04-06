@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class DatasComponent implements OnInit {
   private userDescription: object;
   private listUsers: any[] = [];
+  private cont=0;
 
   constructor(private datasService: DatasService) {
     console.log(this.datasService);
@@ -24,6 +25,13 @@ export class DatasComponent implements OnInit {
 
 async  getUser(user){
     this.userDescription = await this.datasService.getUser(user);
+}
+
+async  changeList(flag){
+    flag?  this.cont+=45:this.cont-=45;;
+    
+    this.listUsers=[];
+   this.listUsers.push(await this.datasService.getUsersSince(this.cont));
 }
 
 }

@@ -24,4 +24,8 @@ export class DatasService {
     getUsers() {
         return this.http.get(`https://api.github.com/users`).toPromise();
     }
+
+    public getUsersSince(cont) {
+        return this.http.get(`https://api.github.com/users?since=${cont}`).toPromise();
+    }
 }

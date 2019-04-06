@@ -1,15 +1,17 @@
 <div class="horizontal">
+<span> <input type="button" name="more" value="prev" (click)="changeList(false)"></span>
 <div >
 
     <div *ngFor="let user of listUsers;"> 
 <ul>
     	<li  *ngFor="let u of user; let i = index" class="user"> 
-    		<a href="#" (click)="getUser(u.login)"> Indice {{u.login}}  </a>  
+    		<a href="#" (click)="getUser(u.login)">  {{u.login}}  </a>  
     	</li>
 </ul>
     </div>
 
 </div >
+<span> <input type="button" name="more" value="more" (click)="changeList(true)"></span>
 
 
 
