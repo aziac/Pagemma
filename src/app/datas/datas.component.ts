@@ -32,6 +32,7 @@ async  changeList(flag){
     
     this.listUsers=[];
    this.listUsers.push(await this.datasService.getUsersSince(this.cont));
+   this.userDescription = await this.datasService.getUser(this.listUsers[0][0].login);
 }
 
 }
