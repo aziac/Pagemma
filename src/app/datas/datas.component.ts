@@ -1,37 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { from } from 'rxjs';
-import { Observable} from "rxjs";
-import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
+import { Component, OnInit, Input } from '@angular/core';
+import { DatasService } from './datas.service';
+import { ObservableLike } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { pipe } from 'rxjs';
 
+@Component({
+  selector: 'app-datas',
+  templateUrl: './datas.component.html',
+  styleUrls: ['./datas.component.css'],
+  providers: [DatasService]
+})
+export class DatasComponent implements OnInit {
+  private userDescription: object;
 
-@Injectable()
-export class DatasComponent {
-    private userName: string;
-    private clientId: string = 'xxxxxx';
-    private clientSecret: string = 'xxxxxx';
-    private url: string = 'https://api.github.com';
+  constructor(private datasService: DatasService) {
+    console.log(this.datasService);
+  }
 
-    constructor(private _http: HttpClient) {
-        this.userName = '';
-    }
-
-    getUser() {
-        if (this.userName) {
-            return this._http.get(this.url + this.userName
-                + '?client_id=' + this.clientId
-                + '&client_secret=' + this.clientSecret).pipe(map(res => res));
-        }
-    }
-
-    getUsers() {
-        if (this.userName) {
-            return this._http.get(this.url).pipe(map(res => res));
-        }
-    }
+  async ngOnInit() {
+    this.userDescription = await this.datasService.getUser('hseguro');
+  }
 }

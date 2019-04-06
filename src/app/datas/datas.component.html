@@ -1,3 +1,9 @@
-<p>
-  datas works!
+<p *ngIf="userDescription == null">
+  Loading user data...
 </p>
+<div *ngIf="userDescription != null" style="display: flex; flex-direction: column;">
+  <div>
+    <img width="300" [src]="userDescription.avatar_url">
+  </div>
+  <b>{{ userDescription.login }}</b>
+</div>
